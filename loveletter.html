@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You💗💗</title>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #ffdce8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* PASSWORD SCREEN */
+        #password-screen {
+            text-align: center;
+        }
+
+        #password-screen input {
+            padding: 10px;
+            width: 200px;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+        }
+
+        #password-screen button {
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: none;
+            background: #ff4b7b;
+            color: white;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        /* MAIN LETTER */
+        .container {
+            display: none;
+            background: white;
+            padding: 35px;
+            width: 85%;
+            max-width: 550px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.1);
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff4b7b;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.05rem;
+            color: #444;
+            white-space: pre-line;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #ff4b7b;
+            font-weight: bold;
+        }
+
+        /* MEME POPUPS */
+        .meme {
+            position: fixed;
+            width: 180px;
+            border-radius: 10px;
+            animation: popFade 3s ease forwards;
+        }
+
+        @keyframes popFade {
+            0% { opacity: 0; transform: scale(0.5); }
+            15% { opacity: 1; transform: scale(1); }
+            70% { opacity: 1; }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PASSWORD SCREEN -->
+    <div id="password-screen">
+        <h2>Enter Password 💗</h2>
+        <input type="password" id="pass">
+        <br>
+        <button onclick="checkPassword()">Enter</button>
+    </div>
+
+    <!-- MAIN PAGE -->
+    <div class="container" id="main-content">
+        <h1>Hii babyy 🥰💗</h1>
+
+        <p>
+Ew this is going to be cringe but... yah I'm gonna write anyways.
+
+It seems like I got attached to you soooo much,....
+like yk those little insects that love staying on buffalo's buttcheeks 😞 yah those ones. 
+Like… way more than I probably should, but here we are. Yayyyy. 🥰💗
+
+You make everything feel lighter, easy to talk with, and somehow we always end up laughing like two adorable idiots who forgot what we were even talking about. 
+That's what I love about us sooo much.
+
+I love how you make me smile without even trying and your ass! Don't get me started. 🫦
+
+You're my favorite person to joke with, tease, annoy 🤷🏾‍♂️, and just exist with.
+
+Sooo yeah, ig that's all I wanted to say.
+
+PS:You aint seeing me writing this shit again anytime soon.
+        </p>
+
+        <div class="footer">I love love you soo much!!! ❤️❤️</div>
+    </div>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="bg-music" src="song.mp3" loop></audio>
+    <script>
+  
+        /* PASSWORD LOGIC */
+        function checkPassword() {
+            const input = document.getElementById("pass").value;
+
+            if (input === "mandioca") {   // ← CHANGE THIS
+                document.getElementById("password-screen").style.display = "none";
+                showMemes();
+            } else {
+                alert("Wrong password 😭");
+            }
+        }
+
+        /* RANDOM MEME POPUPS */
+        const memeImages = [
+         "./images/meme1.jpg",
+         "./images/meme2.jpg",
+         "./images/meme3.jpg",
+         "./images/meme4.jpg",
+         "./images/meme5.jpg",
+         "./images/meme6.jpg" 
+          // Add more if you want
+        ];
+
+        function showMemes() {
+            for (let i = 0; i < memeImages.length; i++) {
+                setTimeout(() => {
+                    const img = document.createElement("img");
+                    img.src = memeImages[i];
+                    img.className = "meme";
+
+                    img.style.top = Math.random() * 60 + "%";
+                    img.style.left = Math.random() * 60 + "%";
+
+                    document.body.appendChild(img);
+
+                    setTimeout(() => {
+                        img.remove();
+                        if (i === memeImages.length - 1) {
+                            showMainContent();
+                        }
+                    }, 3000);
+                }, i * 1200);
+            }
+        }
+
+        /* SHOW MAIN CONTENT + MUSIC */
+        function showMainContent() {
+            document.getElementById("main-content").style.display = "block";
+            document.getElementById("bg-music").play();
+        }
+    </script>
+</body>
+</html>
